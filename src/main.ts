@@ -14,6 +14,8 @@ async function bootstrap() {
     }),
   );
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Documentación de Aplicación de Servicios')
     .setDescription('Endpoints de la aplicación de servicios')
