@@ -9,19 +9,25 @@ import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Usuario } from './entities/usuario.entity';
 import { Repository } from 'typeorm';
+import { JwtService } from '@nestjs/jwt';
+import { JwtPayload } from 'src/auth/interfaces/jwt-payload.interface';
 
 @Injectable()
 export class UsuarioService {
   constructor(
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
+    private readonly jwtService: JwtService,
   ) {}
 
   async create(createUsuarioDto: CreateUsuarioDto) {
     try {
       const newUsuario = this.usuarioRepository.create(createUsuarioDto);
       await this.usuarioRepository.save(newUsuario);
-      return newUsuario;
+      return {
+        ...newUsuario,
+        token: this.getJwtToken({ email: newUsuario.email }),
+      };
     } catch (error) {
       console.error(error);
       throw new InternalServerErrorException('Error al guardar el usuario');
@@ -104,5 +110,12 @@ export class UsuarioService {
       console.error(error);
       throw new InternalServerErrorException('Error al eliminar el usuario');
     }
+  }
+
+  //RETORNAR TOKEN
+  private getJwtToken(payload: JwtPayload) {
+    const token = this.jwtService.sign(payload);
+
+    return token;
   }
 }

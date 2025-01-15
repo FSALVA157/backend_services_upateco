@@ -22,11 +22,10 @@ import { JwtStrategy } from './strategies/jwt.strategy';
       inject: [ConfigService],
 
       useFactory: (configService: ConfigService) => {
-        console.log('jwtConfig', configService.get('JWT_SECRET'));
         return {
           secret: configService.get('JWT_SECRET'),
           signOptions: {
-            expiresIn: '2h',
+            expiresIn: '24h',
           },
         };
       },

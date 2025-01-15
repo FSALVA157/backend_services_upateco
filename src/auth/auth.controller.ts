@@ -1,7 +1,8 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { LoginDto } from './dtos/login.dto';
 import { AuthService } from './auth.service';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -33,5 +34,14 @@ export class AuthController {
   })
   async logoutUsuario() {
     return this.authService.logoutUsuario();
+  }
+
+  @UseGuards(AuthGuard())
+  @Get('private')
+  testingPrivateRoute() {
+    return {
+      status: 'Ok',
+      message: 'Esta es una ruta privada',
+    };
   }
 }
