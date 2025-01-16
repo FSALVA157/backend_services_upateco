@@ -30,7 +30,11 @@ export class UsuarioService {
       };
     } catch (error) {
       console.error(error);
-      throw new InternalServerErrorException('Error al guardar el usuario');
+      if (error instanceof BadRequestException) {
+        throw error;
+      } else {
+        throw new InternalServerErrorException('Error al crear nuevo usuario');
+      }
     }
   }
 

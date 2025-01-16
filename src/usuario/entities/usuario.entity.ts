@@ -47,7 +47,7 @@ export class Usuario {
     nullable: true,
   })
   @Column({ type: 'varchar', length: 20, nullable: true })
-  telefono: string;
+  telefono?: string;
 
   @ApiProperty({
     description: 'Domicilio laboral del usuario',
@@ -55,7 +55,7 @@ export class Usuario {
     nullable: true,
   })
   @Column({ type: 'varchar', length: 200, nullable: true })
-  domicilio_laboral: string;
+  domicilio_laboral?: string;
 
   @ApiProperty({
     description: 'Domicilio particular del usuario',
@@ -63,7 +63,7 @@ export class Usuario {
     nullable: true,
   })
   @Column({ type: 'varchar', length: 200, nullable: true })
-  domicilio_particular: string;
+  domicilio_particular?: string;
 
   @ApiProperty({ description: 'Fecha de creación del registro' })
   @CreateDateColumn({ type: 'timestamp' })
