@@ -33,20 +33,20 @@ export class AuthService {
         'Los datos de login no son válidos (clave)',
       );
 
-    const usuarioValido = await this.usuarioRepository.findOne({
-      where: {
-        email,
-      },
-      select: {
-        email: true,
-        password: true,
-      },
-    });
+    // const usuarioValido = await this.usuarioRepository.findOne({
+    //   where: {
+    //     email,
+    //   },
+    //   select: {
+    //     email: true,
+    //     password: true,
+    //   },
+    // });
 
     return {
-      ...usuarioValido,
+      ...usuario,
       //token: this.getJwtToken( {dni: usuario2.dni})
-      token: this.getJwtToken({ email: usuarioValido.email }),
+      token: this.getJwtToken({ email: usuario.email }),
     };
   }
 
