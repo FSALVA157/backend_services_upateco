@@ -35,6 +35,16 @@ export class ServiciosController {
     return this.serviciosService.findOneByTitulo(texto);
   }
 
+  @Get('/categoria/:id_categoria')
+  findManyByCategory(@Param('id_categoria') id_categoria: number) {
+    return this.serviciosService.findByCategoria(id_categoria);
+  }
+
+  @Get('/usuario/:id_user')
+  findManyByUser(@Param('id_user') user_id: number) {
+    return this.serviciosService.findByUser(user_id);
+  }
+
   @Patch(':id')
   update(
     @Param('id') id: string,

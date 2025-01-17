@@ -7,6 +7,8 @@ import { CommonModule } from './common/common.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { AuthModule } from './auth/auth.module';
 import { ServiciosModule } from './servicios/servicios.module';
+import { RolesModule } from './roles/roles.module';
+import { CategoriaModule } from './categoria/categoria.module';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { ServiciosModule } from './servicios/servicios.module';
     UsuarioModule,
     AuthModule,
     ServiciosModule,
+    RolesModule,
+    CategoriaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

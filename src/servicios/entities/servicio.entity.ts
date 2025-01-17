@@ -5,8 +5,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
+import { Usuario } from 'src/usuario/entities/usuario.entity';
+import { Categoria } from 'src/categoria/entities/categoria.entity';
 
 @Entity()
 export class Servicio {
@@ -20,6 +24,13 @@ export class Servicio {
   })
   @Column({ type: 'int', nullable: false })
   usuario_id: number;
+
+  @ManyToOne(() => Usuario, { eager: true })
+  @JoinColumn({
+    name: 'usuario_id',
+    referencedColumnName: 'id_usuario',
+  })
+  usuario: Usuario;
 
   @ApiProperty({
     description: 'Título del servicio',
@@ -38,6 +49,13 @@ export class Servicio {
   @ApiProperty({ description: 'ID de la categoría', example: 1 })
   @Column({ type: 'int', nullable: false })
   categoria_id: number;
+
+  @ManyToOne(() => Categoria, { eager: true })
+  @JoinColumn({
+    name: 'categoria_id',
+    referencedColumnName: 'id_categoria',
+  })
+  categoria: Categoria;
 
   @ApiProperty({
     description: 'Duración en minutos horas o días',

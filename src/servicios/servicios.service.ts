@@ -84,8 +84,51 @@ export class ServiciosService {
     }
   }
 
-  //TODO: Implementar el método para buscar por categoría
-  //TODO: Implementar el método para buscar por usuario
+  async findByCategoria(categoria: number) {
+    try {
+      const servicios = await this.servicioRepository.findBy({
+        categoria_id: categoria,
+      });
+      if (!servicios.length) {
+        throw new NotFoundException(
+          'No se encontraron servicios en esta categoría',
+        );
+      }
+      return servicios;
+    } catch (error) {
+      console.error(error);
+      if (error instanceof NotFoundException) {
+        throw error;
+      } else {
+        throw new InternalServerErrorException(
+          'Error al buscar servicios por categoría',
+        );
+      }
+    }
+  }
+
+  async findByUser(user_id: number) {
+    try {
+      const servicios = await this.servicioRepository.findBy({
+        usuario_id: user_id,
+      });
+      if (!servicios.length) {
+        throw new NotFoundException(
+          'No se encontraron servicios para el usuario seleccionado',
+        );
+      }
+      return servicios;
+    } catch (error) {
+      console.error(error);
+      if (error instanceof NotFoundException) {
+        throw error;
+      } else {
+        throw new InternalServerErrorException(
+          'Error al buscar servicios por usuario',
+        );
+      }
+    }
+  }
 
   async update(id: number, updateServicioDto: UpdateServicioDto) {
     try {

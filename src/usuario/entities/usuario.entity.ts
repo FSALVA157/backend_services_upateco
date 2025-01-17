@@ -7,9 +7,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { hash } from 'bcrypt';
 import { ApiProperty } from '@nestjs/swagger';
+import { Role } from 'src/roles/entities/role.entity';
 //import { Roles } from '../roles/entities/roles.entity';
 
 @Entity()
@@ -40,6 +43,13 @@ export class Usuario {
   @ApiProperty({ description: 'ID del rol del usuario', example: 1 })
   @Column({ type: 'int', nullable: false })
   role_id: number;
+
+  @ManyToOne(() => Role, { eager: true })
+  @JoinColumn({
+    name: 'role_id',
+    referencedColumnName: 'id_role',
+  })
+  rol: Role;
 
   @ApiProperty({
     description: 'Teléfono del usuario',
