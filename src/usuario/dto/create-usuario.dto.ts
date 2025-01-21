@@ -76,7 +76,7 @@ export class CreateUsuarioDto {
 
   @ApiProperty({
     example: 1,
-    description: 'ID del rol del usuario',
+    description: 'ID del rol del usuario: 1-oferente, 2-buscador, 3-ambos',
     required: true,
   })
   @IsInt()

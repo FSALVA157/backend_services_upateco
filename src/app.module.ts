@@ -9,6 +9,9 @@ import { AuthModule } from './auth/auth.module';
 import { ServiciosModule } from './servicios/servicios.module';
 import { RolesModule } from './roles/roles.module';
 import { CategoriaModule } from './categoria/categoria.module';
+import { SolicitudesModule } from './solicitudes/solicitudes.module';
+import { RechazoModule } from './rechazo/rechazo.module';
+import { EstadoModule } from './estado/estado.module';
 
 @Module({
   imports: [
@@ -29,6 +32,9 @@ import { CategoriaModule } from './categoria/categoria.module';
     ServiciosModule,
     RolesModule,
     CategoriaModule,
+    SolicitudesModule,
+    RechazoModule,
+    EstadoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

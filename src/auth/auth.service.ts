@@ -37,15 +37,17 @@ export class AuthService {
     //   where: {
     //     email,
     //   },
+    //   relations: ['roles'],
     //   select: {
     //     email: true,
     //     password: true,
     //   },
     // });
 
+    // console.log("USUARIO VALIDO", usuarioValido);
+
     return {
       ...usuario,
-      //token: this.getJwtToken( {dni: usuario2.dni})
       token: this.getJwtToken({ email: usuario.email }),
     };
   }

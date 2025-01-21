@@ -18,6 +18,12 @@ export class Servicio {
   @PrimaryGeneratedColumn('increment')
   id_servicio: number;
 
+  // @OneToMany(() => Solicitud, (type) => type.servicio_id, {
+  //   onDelete: 'CASCADE',
+  //   eager: true,
+  // })
+  // solicitudes: Solicitud[];
+
   @ApiProperty({
     description: 'Id del Usuario Autor',
     example: 10,

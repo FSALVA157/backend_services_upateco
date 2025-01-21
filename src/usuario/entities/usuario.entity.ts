@@ -40,16 +40,20 @@ export class Usuario {
   @Column({ type: 'varchar', length: 60, nullable: false })
   password: string;
 
-  @ApiProperty({ description: 'ID del rol del usuario', example: 1 })
-  @Column({ type: 'int', nullable: false })
+  @ApiProperty({
+    description: 'ID del rol del usuario: 1-oferente, 2-buscador, 3-ambos',
+    example: 1,
+  })
+  @Column({ type: 'int', nullable: false, default: 2 })
   role_id: number;
 
-  @ManyToOne(() => Role, { eager: true })
+  //le permito nullable porque al inicio podría no estar llenada la tabla de roles
+  @ManyToOne(() => Role, { eager: true, nullable: true })
   @JoinColumn({
     name: 'role_id',
     referencedColumnName: 'id_role',
   })
-  rol: Role;
+  rol?: Role;
 
   @ApiProperty({
     description: 'Teléfono del usuario',
