@@ -12,6 +12,7 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { SolicitudesModule } from './solicitudes/solicitudes.module';
 import { RechazoModule } from './rechazo/rechazo.module';
 import { EstadoModule } from './estado/estado.module';
+import { VotosModule } from './votos/votos.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { EstadoModule } from './estado/estado.module';
     SolicitudesModule,
     RechazoModule,
     EstadoModule,
+    VotosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

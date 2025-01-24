@@ -55,7 +55,7 @@ export class CreateSolicitudDto {
   @IsString()
   @IsOptional()
   @IsEnum(['finalizado', 'cancelado'], {
-    message: 'El estado final debe ser "finalizado" o "cancelado"'
+    message: 'El estado final debe ser "finalizado" o "cancelado"',
   })
   estado_final: 'finalizado' | 'cancelado';
 
