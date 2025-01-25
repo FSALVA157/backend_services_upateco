@@ -40,7 +40,9 @@ export class UsuarioService {
 
   async findAll() {
     try {
-      return await this.usuarioRepository.find();
+      return await this.usuarioRepository.find({
+        relations: ['favoritos', 'favoritos.servicio'],
+      });
     } catch (error) {
       console.error(error);
       throw new InternalServerErrorException('Error al obtener los usuarios');

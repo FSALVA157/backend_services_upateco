@@ -7,10 +7,12 @@ import {
   DeleteDateColumn,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Usuario } from 'src/usuario/entities/usuario.entity';
 import { Categoria } from 'src/categoria/entities/categoria.entity';
+import { Favorito } from 'src/favoritos/entities/favorito.entity';
 
 @Entity()
 export class Servicio {

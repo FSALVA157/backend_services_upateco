@@ -9,10 +9,12 @@ import {
   DeleteDateColumn,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 import { hash } from 'bcrypt';
 import { ApiProperty } from '@nestjs/swagger';
 import { Role } from 'src/roles/entities/role.entity';
+import { Favorito } from 'src/favoritos/entities/favorito.entity';
 //import { Roles } from '../roles/entities/roles.entity';
 
 @Entity()
@@ -78,6 +80,12 @@ export class Usuario {
   })
   @Column({ type: 'varchar', length: 200, nullable: true })
   domicilio_particular?: string;
+
+  @OneToMany(() => Favorito, (favorito) => favorito.usuario, {
+    eager: true,
+    cascade: true,
+  })
+  favoritos: Favorito[];
 
   @ApiProperty({ description: 'Fecha de creación del registro' })
   @CreateDateColumn({ type: 'timestamp' })
