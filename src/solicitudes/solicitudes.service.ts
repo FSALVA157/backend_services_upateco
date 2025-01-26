@@ -45,6 +45,29 @@ export class SolicitudesService {
     }
   }
 
+  async findManyByService(id_service: number) {
+    try {
+      const solicitudes = await this.solicitudRepository.find({
+        where: { servicio_id: id_service },
+      });
+      if (!solicitudes.length) {
+        throw new NotFoundException(
+          'No se encontraron solicitudes para este servicio',
+        );
+      }
+      return solicitudes;
+    } catch (error) {
+      console.error(error);
+      if (error instanceof NotFoundException) {
+        throw error;
+      } else {
+        throw new InternalServerErrorException(
+          'Error al buscar solicitudes por servicio',
+        );
+      }
+    }
+  }
+
   async findOne(id: number) {
     try {
       const solicitud = await this.solicitudRepository.findOneBy({
