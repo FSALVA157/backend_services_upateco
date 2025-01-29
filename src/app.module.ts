@@ -14,6 +14,7 @@ import { RechazoModule } from './rechazo/rechazo.module';
 import { EstadoModule } from './estado/estado.module';
 import { VotosModule } from './votos/votos.module';
 import { FavoritosModule } from './favoritos/favoritos.module';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { FavoritosModule } from './favoritos/favoritos.module';
     EstadoModule,
     VotosModule,
     FavoritosModule,
+    FilesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
