@@ -59,6 +59,15 @@ export class CreateServicioDto {
   horario: string;
 
   @ApiProperty({
+    description: 'URL de la imagen del servicio',
+    example: 'https://example.com/image.jpg',
+    required: false,
+  })
+  @IsString()
+  @IsOptional()
+  image_url?: string;
+
+  @ApiProperty({
     description: 'Estado del servicio(false: en pausa, true: activo)',
     example: true,
   })

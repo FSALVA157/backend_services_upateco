@@ -86,6 +86,13 @@ export class Servicio {
   @Column({ type: 'boolean', default: true, nullable: true })
   estado?: boolean;
 
+  @ApiProperty({
+    description: 'URL de la imagen del servicio',
+    example: 'https://ejemplo.com/imagen.jpg',
+  })
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  image_url?: string;
+
   @ApiProperty({ description: 'Fecha de creación del registro' })
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
