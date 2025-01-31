@@ -26,6 +26,35 @@ describe('ServiciosController', () => {
     categoria_id: 1,
     duracion: '2 horas',
     horario: 'Lunes a Viernes 9:00-18:00',
+    usuario: {
+      id_usuario: 2,
+      email: 'maurokpo777@gmail.com',
+      nombre: 'Mauro',
+      apellido: 'Gomez',
+      password: '$2b$10$p5ka2E4r3Xz7oqOy1Gq4WeAWMffiQdQ0VtjdMbzcOktjhBf3vdOWa',
+      role_id: 1,
+      telefono: '+3874567890',
+      domicilio_laboral: 'Av. P. Sherman Wallaby',
+      domicilio_particular: 'Calle Sydney',
+      fecha_creacion: '2025-01-14T19:53:58.617Z',
+      fecha_actualizacion: '2025-01-14T19:53:58.617Z',
+      deletedAt: null,
+      favoritos: [],
+      rol: {
+        id_role: 1,
+        rol: 'oferente',
+      },
+      hashPassword: async function () {
+        // Mock implementation
+        return Promise.resolve();
+      },
+    },
+    categoria: {
+      id_categoria: 2,
+      categoria: 'jardineria',
+    },
+    createdAt: '2025-01-14T19:53:58.617Z',
+    updatedAt: '2025-01-14T19:53:58.617Z',
   };
 
   beforeEach(async () => {
@@ -113,26 +142,26 @@ describe('ServiciosController', () => {
   // describe('update', () => {
   //   it('should update a service', async () => {
   //     const updateDto: UpdateServicioDto = {
-  //       titulo: 'Updated service'
+  //       titulo: 'Updated service',
   //     };
 
   //     jest.spyOn(service, 'update').mockResolvedValue({
   //       ...mockServicio,
-  //       ...updateDto
+  //       ...updateDto,
   //     });
 
   //     const result = await controller.update('1', updateDto);
   //     expect(result).toEqual({
   //       ...mockServicio,
-  //       titulo: 'Updated service'
+  //       titulo: 'Updated service',
   //     });
   //   });
   // });
 
-  // describe('remove', () => {
-  //   it('should remove a service', async () => {
-  //     const result = await controller.remove('1');
-  //     expect(result).toEqual(mockServicio);
-  //   });
-  // });
+  describe('remove', () => {
+    it('should remove a service', async () => {
+      const result = await controller.remove('1');
+      expect(result).toEqual(mockServicio);
+    });
+  });
 });
